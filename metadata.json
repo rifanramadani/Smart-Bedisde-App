@@ -1,0 +1,5 @@
+{
+  "name": "VitaGuard Monitor",
+  "description": "A professional medical monitoring dashboard prototype simulating real-time vital signs (BPM, SpO2, BP, RR).",
+  "requestFramePermissions": []
+}
