@@ -43,9 +43,9 @@ export function Login({ onLoginSuccess, onNavigateRegister }: LoginProps) {
           <div className="p-3 bg-rose-500/10 rounded-2xl border border-rose-500/20 mb-4">
             <Activity className="w-8 h-8 text-rose-500" />
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">VitaGuard Portal</h1>
+          <h1 className="text-2xl font-bold text-white tracking-tight">SMART BEDSIDE PORTAL</h1>
           <p className="text-slate-400 text-sm mt-2 text-center">
-            Sistem Pemantauan Pasien Terintegrasi<br/>Khusus Tenaga Kesehatan
+            Sistem Telemedicine Pemantauan Tanda Vital Pasien<br/>Khusus Tenaga Kesehatan
           </p>
         </div>
 
