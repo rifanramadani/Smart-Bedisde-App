@@ -52,7 +52,7 @@ export default function App() {
               <div className="p-2 bg-rose-500/10 rounded-xl border border-rose-500/20">
                 <Activity className="w-6 h-6 text-rose-500" />
               </div>
-              <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">VitaGuard</h1>
+              <h1 className="text-xl font-bold tracking-tight text-white hidden sm:block">SMART BEDSIDE MONITOR</h1>
             </div>
             
             {/* Settings Dropdown Menu */}
