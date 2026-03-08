@@ -223,7 +223,7 @@ export default function App() {
                       Alarm: AUTO
                     </div>
                     <div className="flex items-center gap-1 sm:gap-2">
-                      <span className="hidden md:block">VitaGuard Connected</span>
+                      <span className="hidden md:block">Smart Bedside Connected</span>
                       <BatteryFull className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
                     </div>
                   </div>
@@ -350,7 +350,7 @@ export default function App() {
               </div>
           
               <h2 className="text-2xl font-bold text-white mb-2">QR Scanner</h2>
-              <p className="text-slate-400 max-w-md mb-4">Gunakan kamera perangkat untuk memindai wristband pasien atau VitaGuard IoT device.</p>
+              <p className="text-slate-400 max-w-md mb-4">Gunakan kamera perangkat untuk memindai wristband pasien atau Smart Bedside monitor IoT device.</p>
           
               <div className="w-full flex justify-center px-4">
                 <div className="w-full max-w-3xl bg-slate-900/60 rounded-2xl p-4">
