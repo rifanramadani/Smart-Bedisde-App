@@ -127,36 +127,6 @@ export default Scanner;
 
 // Then, replace the existing "TAB: SCANNER" block with the code below (or merge it):
 
-/*
-  {activeTab === 'scanner' && (
-    <div className="flex flex-col items-center justify-center h-[60vh] text-center animate-in fade-in zoom-in-95 duration-500">
-      <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
-        <QrCode className="w-10 h-10 text-emerald-400" />
-      </div>
-      <h2 className="text-2xl font-bold text-white mb-2">QR Scanner</h2>
-      <p className="text-slate-400 max-w-md mb-4">Use device camera to scan patient wristbands or new VitaGuard IoT devices.</p>
-
-      {/* Scanner component */}
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-3xl bg-slate-900/60 rounded-2xl p-4">
-          <Scanner
-            onResult={(text) => {
-              // handle scanned text here (example: assign device / open modal / lookup patient)
-              // For now we just show an alert — replace with app logic
-              alert(`QR result:\n${text}`);
-              // Optionally: setSelectedDevice(...) or call an API to attach device to patient
-            }}
-            onError={(err) => {
-              console.error('Scanner error', err);
-              // you can show a toast / UI message here
-            }}
-          />
-        </div>
-      </div>
-    </div>
-  )}
-*/
-
 
 // --------------------------------------------------------------------
 // USAGE NOTES (copy to project README or developer notes):
