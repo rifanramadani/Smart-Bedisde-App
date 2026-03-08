@@ -6,6 +6,7 @@ import { SignalChart } from './components/SignalChart';
 import { MonitorCard } from './components/MonitorCard';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
+import Scanner from './components/Scanner';
 
 // Mock Devices Data
 const DEVICES = [
@@ -23,6 +24,35 @@ export default function App() {
   const { current } = useVitalSigns();
   const waveforms = useWaveforms();
 
+  // handler hasil scan
+  const handleScanResult = (text: string) => {
+    // contoh sederhana: jika QR berisi device id yang ada di DEVICES -> pilih device & pindah ke tab live
+    const trimmed = text?.trim?.() ?? '';
+    const matched = DEVICES.find(d => d.id === trimmed || d.id === text);
+    if (matched) {
+      setSelectedDevice(matched);
+      setActiveTab('live');
+      return;
+    }
+  
+    // contoh fallback: jika QR berisi patient name -> pilih device sesuai patient
+    const matchedPatient = DEVICES.find(d => d.patient?.toLowerCase() === trimmed.toLowerCase());
+    if (matchedPatient) {
+      setSelectedDevice(matchedPatient);
+      setActiveTab('live');
+      return;
+    }
+  
+    // default: tampilkan hasil (ganti alert dengan modal/toast di app nyata)
+    alert(`QR result:\n${text}`);
+  };
+  
+  const handleScanError = (err: Error) => {
+    console.error('Scanner error', err);
+    // tampilkan pesan lebih ramah untuk user
+    alert('Gagal mengakses kamera / membaca QR: ' + (err?.message ?? 'unknown error'));
+  };
+  
   // Authentication Routing
   if (authView === 'login') {
     return (
@@ -314,15 +344,25 @@ export default function App() {
 
           {/* TAB: SCANNER */}
           {activeTab === 'scanner' && (
-            <div className="flex flex-col items-center justify-center h-[60vh] text-center animate-in fade-in zoom-in-95 duration-500">
+            <div className="flex flex-col items-center justify-center min-h-[60vh] text-center animate-in fade-in zoom-in-95 duration-500">
               <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6">
                 <QrCode className="w-10 h-10 text-emerald-400" />
               </div>
+          
               <h2 className="text-2xl font-bold text-white mb-2">QR Scanner</h2>
-              <p className="text-slate-400 max-w-md mb-8">Use device camera to scan patient wristbands or new VitaGuard IoT devices.</p>
-              <button className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl font-medium transition-colors shadow-lg shadow-emerald-500/20">
-                Open Camera
-              </button>
+              <p className="text-slate-400 max-w-md mb-4">Gunakan kamera perangkat untuk memindai wristband pasien atau VitaGuard IoT device.</p>
+          
+              <div className="w-full flex justify-center px-4">
+                <div className="w-full max-w-3xl bg-slate-900/60 rounded-2xl p-4">
+                  <Scanner
+                    onResult={(text) => handleScanResult(text)}
+                    onError={(err) => handleScanError(err)}
+                  />
+                  <div className="mt-3 text-sm text-slate-400">
+                    <span>Catatan: Akses kamera hanya tersedia di <strong>localhost</strong> atau via <strong>HTTPS</strong>.</span>
+                  </div>
+                </div>
+              </div>
             </div>
           )}
 
