@@ -248,7 +248,7 @@ export default function App() {
                         color="#eab308" // yellow-500
                       />
                       <SignalChart 
-                        label1="PCG (Sync)"
+                        label1="Pleth"
                         label2=""
                         data={waveforms} 
                         dataKey="pcg" 
